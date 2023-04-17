@@ -1,6 +1,11 @@
+// import important parts of sequelize library
 const { Model, DataTypes } = require('sequelize');
-
+// import our database connection from config.js
 const sequelize = require('../config/connection');
+
+const Product = require('./Product');
+const Category = require('./Category');
+const Tag = require('./Tag');
 
 class ProductTag extends Model {}
 
@@ -16,14 +21,14 @@ ProductTag.init(
     product_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: product,
+        model: Product,
         key: 'id'
       }
     },
     tag_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: tag,
+        model: Tag,
         key: 'id'
       }
     }
